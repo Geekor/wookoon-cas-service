@@ -17,6 +17,15 @@ wookoonsdk/
 
 ## SDK 使用示例
 
+初始化项目
+
+```bash
+go mod init demo
+cd demo
+```
+
+main.go 代码
+
 ```go
 package main
 
@@ -42,6 +51,13 @@ func main() {
 		log.Fatalf("服务启动失败: %v", err)
 	}
 }
+```
+
+安装依赖
+
+```bash
+go get github.com/geekor/wookoon-cas-service@latest
+go mod tidy
 ```
 
 运行
