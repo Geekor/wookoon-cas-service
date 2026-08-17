@@ -11,6 +11,7 @@ func (s *Server) useAuthRoutes() {
 		api.GET("/login", hd.GetLoginURL)
 		api.GET("/login-auto", hd.RedirectLogin)
 		api.POST("/callback", hd.HandleCallback)
+		api.GET("/profile-auto", hd.RedirectProfile)
 
 		// 需要认证的接口
 		auth := api.Group("")

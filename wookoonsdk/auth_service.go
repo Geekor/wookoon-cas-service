@@ -7,6 +7,11 @@ type LoginResponse struct {
 	LoginURL string `json:"loginUrl"`
 }
 
+// MyProfileResponse 我的账户响应
+type MyProfileResponse struct {
+	ProfileURL string `json:"profileUrl"`
+}
+
 // CallbackRequest 回调请求
 type CallbackRequest struct {
 	Code  string `json:"code" binding:"required"`
@@ -77,6 +82,18 @@ func (s *AuthService) HandleCallback(req *CallbackRequest) (*CallbackResponse, e
 	return &CallbackResponse{
 		Token: token,
 		User:  user,
+	}, nil
+}
+
+// GetLoginURL 获取登录 URL
+func (s *AuthService) GetMyProfile(tokenString string) (*MyProfileResponse, error) {
+	if tokenString == "" {
+		return nil, errors.New("tokenString 不能为空")
+	}
+
+	url := s.casdoorClient.GetMyProfileURL(tokenString)
+	return &MyProfileResponse{
+		ProfileURL: url,
 	}, nil
 }
 

@@ -32,6 +32,11 @@ func (c *CasdoorClient) GetSigninURL(redirectURI string) string {
 	return c.sdkClient.GetSigninUrl(redirectURI)
 }
 
+// GetSigninURL 获取 Casdoor 登录 URL
+func (c *CasdoorClient) GetMyProfileURL(accessToken string) string {
+	return c.sdkClient.GetMyProfileUrl(accessToken)
+}
+
 // ExchangeCodeForUser 使用 code 换取用户信息
 func (c *CasdoorClient) ExchangeCodeForUser(code, state string) (*StandardUser, error) {
 	// 1. 用 code 换取 Casdoor 的 OAuth Token

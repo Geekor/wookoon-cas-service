@@ -48,6 +48,7 @@ func (s *Server) AuthRequired() gin.HandlerFunc {
 		}
 
 		// 将用户信息注入 Context，供后续 Handler 使用
+		c.Set("tokenString", tokenString)
 		c.Set("userId", claims.UserID)
 		c.Set("username", claims.Username)
 		c.Set("displayName", claims.DisplayName)
