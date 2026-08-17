@@ -11,13 +11,13 @@ func (s *Server) useAuthRoutes() {
 		api.GET("/login", hd.GetLoginURL)
 		api.GET("/login-auto", hd.RedirectLogin)
 		api.POST("/callback", hd.HandleCallback)
+		api.GET("/me-auto", hd.RedirectProfile)
 
 		// 需要认证的接口
 		auth := api.Group("")
 		auth.Use(s.AuthRequired())
 		{
 			auth.GET("/me", hd.GetMe)
-			api.GET("/me-auto", hd.RedirectProfile)
 			auth.POST("/logout", hd.Logout)
 		}
 	}

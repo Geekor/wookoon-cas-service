@@ -75,8 +75,7 @@ func (h *AuthHandler) HandleCallback(c *gin.Context) {
 // RedirectProfile 直接重定向到个人资料页
 // GET /api/cas/profile-auto
 func (h *AuthHandler) RedirectProfile(c *gin.Context) {
-
-	resp, err := h.authService.GetMyProfile(c.GetString("tokenString"))
+	resp, err := h.authService.GetMyProfile()
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"error": err.Error(),

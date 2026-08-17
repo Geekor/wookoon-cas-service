@@ -86,12 +86,8 @@ func (s *AuthService) HandleCallback(req *CallbackRequest) (*CallbackResponse, e
 }
 
 // GetLoginURL 获取登录 URL
-func (s *AuthService) GetMyProfile(tokenString string) (*MyProfileResponse, error) {
-	if tokenString == "" {
-		return nil, errors.New("tokenString 不能为空")
-	}
-
-	url := s.casdoorClient.GetMyProfileURL(tokenString)
+func (s *AuthService) GetMyProfile() (*MyProfileResponse, error) {
+	url := s.casdoorClient.GetMyProfileURL()
 	return &MyProfileResponse{
 		ProfileURL: url,
 	}, nil
